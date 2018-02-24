@@ -5,25 +5,23 @@ class TestaTransferencia{
 		
  	 Conta origem = new Conta();
 	 origem.deposita(10000);
-	 origem.numero = 70;
-	 origem.titular = "Bolsonaro";
+	 origem.setNumero(70);
+	 origem.setTitular("Bolsonaro");
 
 	 Conta destino = new Conta();
 	 destino.deposita(30000);
-	 destino.titular = "Pablo";
-	 destino.numero = 100;
+	 destino.setTitular("Pablo");
+	 destino.setNumero(100);
 
-	 origem.imprime();
-	 destino.imprime();
+	 origem.recuperaDadosParaImpressao();
+	 destino.recuperaDadosParaImpressao();
 
 	 boolean transferiu = origem.transfere(destino,500);
 
-	 origem.imprime();
-	 destino.imprime();	  	
+	 origem.recuperaDadosParaImpressao();
+	 destino.recuperaDadosParaImpressao();	  	
 
 	}
-
-
 
 
 }

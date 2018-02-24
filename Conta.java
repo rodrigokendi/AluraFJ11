@@ -1,51 +1,123 @@
 class Conta{
 
 
-	int numero;
-	String titular;
-	double saldo;
-	double limite;
-	//double saqueDisponivel = saldo + limite;
+	private int numero;
+	private String titular;
+	private double saldo;
+	private double limite;
+	private String dataAbertura;
+	private String agencia;
+	private static int qtdConta;
 
-	boolean saque(double valor){
+
+
+	public int getNumero(){
+	 return numero;
+ 	}
+
+	public void setNumero(int numero){
+	 this.numero = numero;
+	}
+
+	public String getTitular(){
+	 return titular;
+	}
+
+	public void setTitular(String titular){
+	 this.titular = titular;
+	}
+
+	public double getSaldo(){
+	 return saldo;
+	}
+
+
+	public double getLimite(){
+	 return limite;
+	}
+
+	public void setLimite(double limite){
+	 this.limite = limite;
+	}
+
+	public String getDataAbertura(){
+	 return dataAbertura;
+	}
+
+	public void setDataAbertura(String dataAbertura){
+	 this.dataAbertura = dataAbertura;
+	}
+
+	public String getAgencia(){
+	 return agencia;
+	}
+
+	public void setAgencia(String agencia){
+	 this.agencia=agencia;
+	}
+
+	public static int getQtdConta(){
+	 return qtdConta;
+ 	}
+
+
+	public Conta(){
+	  limite = 1000;
+	  qtdConta++; 	
+	}
+
+	public Conta(String titular){
+	 this.titular = titular;
+	 qtdConta++;	
+	}
+
+
+	boolean saca(double valor){
        
  	 if (valor > 0){
-           if(saldo + limite >= valor){ 	
-	     saldo = saldo - valor;
-	     System.out.println("Saque realizado com sucesso");
+           if(saldo + limite >= valor){ 		
 	     return true;	
-	  }
-	}
-	   System.out.println("Erro na operacão de saque");
+	   }
+	 }
+ 	   System.out.println("==================================");
+	   System.out.println("Erro na operacao de saque");
+	   System.out.println("==================================");
 	   return false;	
 	}
 
 
-	void imprime(){
-	  System.out.println("Titular: " + titular);
-	  System.out.println("Saldo: " + saldo);
-	  System.out.println("==================================");
-
+	String recuperaDadosParaImpressao(){
+	 System.out.println("====================");
+	 String dados = "titular: " + this.titular;
+	 dados+= "\nnumero: " + this.numero;
+	 dados+= "\nagencia: " + this.agencia; 
+	 dados+= "\nsaldo: " + this.saldo;  
+	 dados+= "\nlimite: " + this.limite;	
+	 System.out.println(dados); 
+	 System.out.println("====================");
+	 return dados;	
 	}
 
 	void deposita(double valor){
+	 
 	 saldo = saldo + valor;
 	
 	}
 
 	boolean transfere(Conta destino, double valor){
-	 if (saque(valor)){
+	 if (saca(valor)){
 	  destino.deposita(valor);
- 	  System.out.println("Transferencia com sucesso");
-	  System.out.println("==================================");
 	  return true; 	
 	 }
+	  System.out.println("==================================");
  	  System.out.println("Erro na transacao de Transferencia");
  	  System.out.println("==================================");
 	  return false;
 	}
 
-
+	double calculaRendimento(){
+	  return saldo * 0.1;
+	}
 
 
 
