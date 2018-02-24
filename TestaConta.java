@@ -4,7 +4,7 @@ class TestaConta{
 	public static void main(String [] args){
 
 		Conta conta = new Conta();
-		conta.setNumero(224);
+		//conta.setNumero(224);
 		conta.setTitular("Collor");
 		conta.setDataAbertura("20/02/2018"); 
 		conta.setLimite(5000.0);
@@ -18,14 +18,14 @@ class TestaConta{
 	  	conta.recuperaDadosParaImpressao();
 
 		Conta conta1 = new Conta();
-		conta1.setNumero(224);
+		//conta1.setNumero(224);
 		conta1.setTitular("DORIA");
 		conta1.setDataAbertura("20/02/2018");
 		conta1.recuperaDadosParaImpressao();
 
 
 		Conta conta2 = new Conta("TESTE");
-		conta2.setNumero(224);
+		//conta2.setNumero(224);
 		conta2.setDataAbertura("20/02/2018");
 		conta2.recuperaDadosParaImpressao();
 

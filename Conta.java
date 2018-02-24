@@ -1,7 +1,7 @@
 class Conta{
 
 
-	private int numero;
+	private int numero = 1;
 	private String titular;
 	private double saldo;
 	private double limite;
@@ -63,11 +63,13 @@ class Conta{
 
 	public Conta(){
 	  limite = 1000;
+	  this.numero +=1;	
 	  qtdConta++; 	
 	}
 
 	public Conta(String titular){
 	 this.titular = titular;
+	 this.numero +=1;
 	 qtdConta++;	
 	}
 
