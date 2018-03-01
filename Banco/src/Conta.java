@@ -1,10 +1,11 @@
 class Conta {
 
 	private static int numero;
+	private static int identificador;
 	private String titular;
 	private double saldo;
 	private double limite;
-	private String dataAbertura;
+	private Data dataAbertura;
 	private String agencia;
 	private static int qtdConta;
 
@@ -12,6 +13,9 @@ class Conta {
 		return numero;
 	}
 
+	public int getIdentificador() {
+		return identificador;
+	}	
 /*	public void setNumero(int numero) {
 		this.numero = numero;
 	}*/
@@ -36,11 +40,11 @@ class Conta {
 		this.limite = limite;
 	}
 
-	public String getDataAbertura() {
+	public Data getDataAbertura() {
 		return dataAbertura;
 	}
 
-	public void setDataAbertura(String dataAbertura) {
+	public void setDataAbertura(Data dataAbertura) {
 		this.dataAbertura = dataAbertura;
 	}
 
@@ -59,12 +63,14 @@ class Conta {
 	public Conta() {
 		limite = 1000;
 		numero += 1;
+		identificador += 1;	
 		qtdConta++;
 	}
 
 	public Conta(String titular) {
 		this.titular = titular;
 		numero += 1;
+		identificador += 1;	
 		qtdConta++;
 	}
 
@@ -88,6 +94,9 @@ class Conta {
 		dados += "\nagencia: " + this.agencia;
 		dados += "\nsaldo: " + this.saldo;
 		dados += "\nlimite: " + this.limite;
+		dados += "\ndia: " + dataAbertura.dia;
+		dados += "\nmes: " + dataAbertura.mes;
+		dados += "\nano: " + dataAbertura.ano;
 		System.out.println(dados);
 		System.out.println("====================");
 		return dados;
