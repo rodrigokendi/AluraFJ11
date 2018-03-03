@@ -142,13 +142,6 @@ public class Conta {
 
 	}
 
-	/*
-	 * public void alteraDataAbertura(){ Calendar c = Calendar.getInstance();
-	 * Calendar dataAbertura = c.set(year, month, date);
-	 * 
-	 * 
-	 * }
-	 */
 	
 	public String getTipo(){
 		return "Conta";

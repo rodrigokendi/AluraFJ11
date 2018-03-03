@@ -20,7 +20,6 @@ public class ManipuladorDeContas {
 		
 		String titular = evento.getString("titular");
 		this.conta.setTitular(titular);
-		//this.conta.setAgencia("0110");
 		
 		String agencia = evento.getString("agencia");
 		this.conta.setAgencia(agencia);
