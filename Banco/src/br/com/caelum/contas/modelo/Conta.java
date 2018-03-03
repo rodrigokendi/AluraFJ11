@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class Conta {
 
-	private static int numero;
+	private int numero;
 	private static int identificador;
 	private String titular;
 	private double saldo;
@@ -67,17 +67,17 @@ public class Conta {
 
 	public Conta() {
 		limite = 1000;
-		numero += 1;
 		identificador += 1;
 		qtdConta++;
+		numero = qtdConta;
 		criarDataDeAbertura();
 	}
 
 	public Conta(String titular) {
 		this.titular = titular;
-		numero += 1;
 		identificador += 1;
 		qtdConta++;
+		numero = qtdConta;
 		criarDataDeAbertura();
 	}
 
@@ -149,5 +149,9 @@ public class Conta {
 	 * 
 	 * }
 	 */
+	
+	public String getTipo(){
+		return "Conta";
+	}
 
 }
