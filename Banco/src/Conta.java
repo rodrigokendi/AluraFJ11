@@ -1,3 +1,6 @@
+import java.text.DateFormat;
+import java.util.Date;
+
 class Conta {
 
 	private static int numero;
@@ -5,7 +8,7 @@ class Conta {
 	private String titular;
 	private double saldo;
 	private double limite;
-	private Data dataAbertura;
+	private Date dataAbertura;
 	private String agencia;
 	private static int qtdConta;
 
@@ -16,9 +19,6 @@ class Conta {
 	public int getIdentificador() {
 		return identificador;
 	}	
-/*	public void setNumero(int numero) {
-		this.numero = numero;
-	}*/
 
 	public String getTitular() {
 		return titular;
@@ -40,12 +40,12 @@ class Conta {
 		this.limite = limite;
 	}
 
-	public Data getDataAbertura() {
+	public Date getDataAbertura() {
 		return dataAbertura;
 	}
 
-	public void setDataAbertura(Data dataAbertura) {
-		this.dataAbertura = dataAbertura;
+	public void setDataAbertura(Date data) {
+		this.dataAbertura = data;
 	}
 
 	public String getAgencia() {
@@ -94,9 +94,8 @@ class Conta {
 		dados += "\nagencia: " + this.agencia;
 		dados += "\nsaldo: " + this.saldo;
 		dados += "\nlimite: " + this.limite;
-		dados += "\ndia: " + dataAbertura.dia;
-		dados += "\nmes: " + dataAbertura.mes;
-		dados += "\nano: " + dataAbertura.ano;
+		DateFormat f = DateFormat.getDateInstance(DateFormat.MEDIUM);
+		dados += "\ndata abertura: " + f.format(dataAbertura);
 		System.out.println(dados);
 		System.out.println("====================");
 		return dados;
@@ -122,5 +121,7 @@ class Conta {
 	double calculaRendimento() {
 		return saldo * 0.1;
 	}
+	
+
 
 }
