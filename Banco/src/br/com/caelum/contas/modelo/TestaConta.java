@@ -1,15 +1,13 @@
-import java.util.Calendar;
+package br.com.caelum.contas.modelo;
+
 
 class TestaConta {
 
 	public static void main(String[] args) {
 		
-		Calendar c = Calendar.getInstance();
 		
 		Conta conta = new Conta();
-		conta.setTitular("Collor");
-		
-		conta.setDataAbertura(c.getTime());
+		conta.setTitular("Collor");	
 		conta.setLimite(5000.0);
 		conta.setAgencia("0900-0");
 		conta.recuperaDadosParaImpressao();
@@ -22,11 +20,9 @@ class TestaConta {
 
 		Conta conta1 = new Conta();
 		conta1.setTitular("DORIA");
-		conta1.setDataAbertura(c.getTime());
 		conta1.recuperaDadosParaImpressao();
 
 		Conta conta2 = new Conta("TESTE");
-		conta2.setDataAbertura(c.getTime());
 		conta2.recuperaDadosParaImpressao();
 
 		System.out.println("Quantidade total de contas: " + Conta.getQtdConta());

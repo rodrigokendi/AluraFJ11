@@ -1,7 +1,16 @@
+package br.com.caelum.contas.modelo;
+
 import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
-class Conta {
+/**
+ * 
+ * @author rodrigo kendi
+ *
+ */
+
+public class Conta {
 
 	private static int numero;
 	private static int identificador;
@@ -18,7 +27,7 @@ class Conta {
 
 	public int getIdentificador() {
 		return identificador;
-	}	
+	}
 
 	public String getTitular() {
 		return titular;
@@ -44,10 +53,6 @@ class Conta {
 		return dataAbertura;
 	}
 
-	public void setDataAbertura(Date data) {
-		this.dataAbertura = data;
-	}
-
 	public String getAgencia() {
 		return agencia;
 	}
@@ -63,21 +68,30 @@ class Conta {
 	public Conta() {
 		limite = 1000;
 		numero += 1;
-		identificador += 1;	
+		identificador += 1;
 		qtdConta++;
+		criarDataDeAbertura();
 	}
 
 	public Conta(String titular) {
 		this.titular = titular;
 		numero += 1;
-		identificador += 1;	
+		identificador += 1;
 		qtdConta++;
+		criarDataDeAbertura();
 	}
 
-	boolean saca(double valor) {
+	/**
+	 * 
+	 * @param valor
+	 *            a ser sacado da conta
+	 * @return true se sacou
+	 */
+	public boolean saca(double valor) {
 
 		if (valor > 0) {
 			if (saldo + limite >= valor) {
+				saldo -= valor;
 				return true;
 			}
 		}
@@ -87,7 +101,7 @@ class Conta {
 		return false;
 	}
 
-	String recuperaDadosParaImpressao() {
+	public String recuperaDadosParaImpressao() {
 		System.out.println("====================");
 		String dados = "titular: " + this.titular;
 		dados += "\nnumero: " + numero;
@@ -101,13 +115,13 @@ class Conta {
 		return dados;
 	}
 
-	void deposita(double valor) {
+	public void deposita(double valor) {
 
 		saldo = saldo + valor;
 
 	}
 
-	boolean transfere(Conta destino, double valor) {
+	public boolean transfere(Conta destino, double valor) {
 		if (saca(valor)) {
 			destino.deposita(valor);
 			return true;
@@ -118,10 +132,22 @@ class Conta {
 		return false;
 	}
 
-	double calculaRendimento() {
+	public double calculaRendimento() {
 		return saldo * 0.1;
 	}
-	
 
+	public void criarDataDeAbertura() {
+		Calendar c = Calendar.getInstance();
+		dataAbertura = c.getTime();
+
+	}
+
+	/*
+	 * public void alteraDataAbertura(){ Calendar c = Calendar.getInstance();
+	 * Calendar dataAbertura = c.set(year, month, date);
+	 * 
+	 * 
+	 * }
+	 */
 
 }
