@@ -1,7 +1,6 @@
 
 public class Porta {
-	
-	
+
 	private static int quantidadeDePortasAbertas;
 	private boolean aberta;
 	private String cor;
@@ -11,10 +10,6 @@ public class Porta {
 
 	public boolean isAberta() {
 		return aberta;
-	}
-
-	public void setAberta(boolean aberta) {
-		this.aberta = aberta;
 	}
 
 	public String getCor() {
@@ -47,14 +42,19 @@ public class Porta {
 
 	void abre() {
 
-		this.aberta  = true;
-		quantidadeDePortasAbertas++;	
+		if (!aberta) {
+
+			this.aberta = true;
+			quantidadeDePortasAbertas++;
+		}
 	}
 
 	void fecha() {
 
-		this.aberta = false;
-	//	quantidadeDePortasAbertas--;
+		if (aberta) {
+			this.aberta = false;
+			quantidadeDePortasAbertas--;
+		}
 	}
 
 	void pinta(String s) {
@@ -71,19 +71,19 @@ public class Porta {
 		System.out.println("Porta esta fechada");
 		return false;
 	}
-	
+
 	void imprimeDimensao() {
-		
+
 		String dados = "\nDimensaoX: " + dimensaoX;
-			   dados+= 	"\nDimensaoY: " + dimensaoY;
-			   dados+= 	"\nDimensaoZ: " + dimensaoZ;
-			   
-		System.out.println(dados);	   
+		dados += "\nDimensaoY: " + dimensaoY;
+		dados += "\nDimensaoZ: " + dimensaoZ;
+
+		System.out.println(dados);
 	}
-	
+
 	static int qtdPortasAbertas() {
-	 
+
 		return quantidadeDePortasAbertas;
-		
+
 	}
 }
