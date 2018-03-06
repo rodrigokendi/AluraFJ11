@@ -13,7 +13,6 @@ import java.util.Date;
 public class Conta {
 
 	private int numero;
-	private static int identificador;
 	private String titular;
 	private double saldo;
 	private double limite;
@@ -23,10 +22,6 @@ public class Conta {
 
 	public int getNumero() {
 		return numero;
-	}
-
-	public int getIdentificador() {
-		return identificador;
 	}
 
 	public String getTitular() {
@@ -67,7 +62,6 @@ public class Conta {
 
 	public Conta() {
 		limite = 1000;
-		identificador += 1;
 		qtdConta++;
 		numero = qtdConta;
 		criarDataDeAbertura();
@@ -75,7 +69,6 @@ public class Conta {
 
 	public Conta(String titular) {
 		this.titular = titular;
-		identificador += 1;
 		qtdConta++;
 		numero = qtdConta;
 		criarDataDeAbertura();

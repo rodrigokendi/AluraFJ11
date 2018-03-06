@@ -4,7 +4,7 @@ public class ContaCorrente extends Conta {
 
 	
 	public String getTipo(){
-		return "Conta Corrente";
+		return super.getTipo() + " Corrente";
 	}
 	
 	public boolean saca(double valor) {
