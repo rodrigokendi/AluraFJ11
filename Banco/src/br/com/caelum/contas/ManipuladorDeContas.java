@@ -12,22 +12,21 @@ public class ManipuladorDeContas {
 	public void criaConta(Evento evento) {
 
 		String tipo = evento.getSelecionadoNoRadio("tipo");
-		if (tipo.equals("Conta Corrente")){
+		if (tipo.equals("Conta Corrente")) {
 			this.conta = new ContaCorrente();
-		}else if (tipo.equals("Conta Poupança")){
+		} else if (tipo.equals("Conta PoupanÃ§a")) {
 			this.conta = new ContaPoupanca();
 		}
-		
+
 		String titular = evento.getString("titular");
 		this.conta.setTitular(titular);
-		
+
 		String agencia = evento.getString("agencia");
 		this.conta.setAgencia(agencia);
 
 	}
 
 	public void deposita(Evento evento) {
-
 		double valorDigitado = evento.getDouble("valorOperacao");
 		this.conta.deposita(valorDigitado);
 	}
@@ -36,11 +35,11 @@ public class ManipuladorDeContas {
 		double valorDigitado = evento.getDouble("valorOperacao");
 		this.conta.saca(valorDigitado);
 	}
-	
-	public void transfere(Evento evento){
+
+	public void transfere(Evento evento) {
 		Conta destino = (Conta) evento.getSelecionadoNoCombo("destino");
-		conta.transfere(destino,evento.getDouble("valorTransferencia"));
-		
+		conta.transfere(destino, evento.getDouble("valorTransferencia"));
+
 	}
 
 }

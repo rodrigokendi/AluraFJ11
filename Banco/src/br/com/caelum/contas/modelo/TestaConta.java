@@ -6,7 +6,7 @@ class TestaConta {
 	public static void main(String[] args) {
 		
 		
-		Conta conta = new Conta();
+		Conta conta = new ContaCorrente();
 		conta.setTitular("Collor");	
 		conta.setLimite(5000.0);
 		conta.setAgencia("0900-0");
@@ -18,11 +18,11 @@ class TestaConta {
 		System.out.println("Rendimento mensal: " + conta.calculaRendimento() + "\n");
 		conta.recuperaDadosParaImpressao();
 
-		Conta conta1 = new Conta();
+		Conta conta1 = new ContaPoupanca();
 		conta1.setTitular("DORIA");
 		conta1.recuperaDadosParaImpressao();
 
-		Conta conta2 = new Conta("TESTE");
+		Conta conta2 = new ContaPoupanca();
 		conta2.recuperaDadosParaImpressao();
 
 		System.out.println("Quantidade total de contas: " + Conta.getQtdConta());

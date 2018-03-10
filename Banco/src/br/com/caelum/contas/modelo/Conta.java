@@ -10,7 +10,7 @@ import java.util.Date;
  *
  */
 
-public class Conta {
+public abstract class Conta {
 
 	private int numero;
 	private String titular;
@@ -82,16 +82,16 @@ public class Conta {
 	 */
 	public boolean saca(double valor) {
 
-		if (valor > 0) {
-			if (saldo + limite >= valor) {
-				saldo -= valor;
-				return true;
-			}
+		if (valor < 0) {
+			throw new IllegalArgumentException("Voce tentou sacar um valor negativo");
 		}
-		System.out.println("==================================");
-		System.out.println("Erro na operacao de saque");
-		System.out.println("==================================");
-		return false;
+
+		if (saldo + limite <= valor) {
+			throw new SaldoInsuficienteException(valor);
+		}
+
+		saldo -= valor;
+		return true;
 	}
 
 	public String recuperaDadosParaImpressao() {
@@ -103,6 +103,7 @@ public class Conta {
 		dados += "\nlimite: " + this.limite;
 		DateFormat f = DateFormat.getDateInstance(DateFormat.MEDIUM);
 		dados += "\ndata abertura: " + f.format(dataAbertura);
+		dados += "\ntipo da conta: " + this.getTipo();
 		System.out.println(dados);
 		System.out.println("====================");
 		return dados;
@@ -110,19 +111,23 @@ public class Conta {
 
 	public void deposita(double valor) {
 
+		if (valor <= 0) {
+			throw new IllegalArgumentException("Voce nao pode depositar valor menor ou igual a zero");
+		}
+
 		saldo = saldo + valor;
 
 	}
 
 	public boolean transfere(Conta destino, double valor) {
+
 		if (saca(valor)) {
 			destino.deposita(valor);
 			return true;
+		} else {
+			throw new SaldoInsuficienteException(valor);
 		}
-		System.out.println("==================================");
-		System.out.println("Erro na transacao de Transferencia");
-		System.out.println("==================================");
-		return false;
+
 	}
 
 	public double calculaRendimento() {
@@ -135,9 +140,6 @@ public class Conta {
 
 	}
 
-	
-	public String getTipo(){
-		return "Conta";
-	}
+	public abstract String getTipo();
 
 }
