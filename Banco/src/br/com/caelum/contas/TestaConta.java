@@ -1,5 +1,8 @@
 package br.com.caelum.contas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.caelum.contas.modelo.Conta;
 import br.com.caelum.contas.modelo.ContaCorrente;
 import br.com.caelum.contas.modelo.ContaPoupanca;
@@ -17,7 +20,10 @@ public class TestaConta {
 		System.out.println("objeto z: " + z);
 		c.deposita(100);
 		System.out.println("saldo: " + c.getSaldo()/0);
-	
+		
+		List<Conta> contas = new ArrayList<>();
+		contas.add(new ContaCorrente());
+		contas.get(0).setTitular("Teste");
 		
 		
 		

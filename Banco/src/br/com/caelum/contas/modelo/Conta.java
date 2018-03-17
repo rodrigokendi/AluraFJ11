@@ -80,7 +80,7 @@ public abstract class Conta {
 	 *            a ser sacado da conta
 	 * @return true se sacou
 	 */
-	public boolean saca(double valor) {
+	public synchronized boolean saca(double valor) {
 
 		if (valor < 0) {
 			throw new IllegalArgumentException("Voce tentou sacar um valor negativo");
@@ -109,7 +109,7 @@ public abstract class Conta {
 		return dados;
 	}
 
-	public void deposita(double valor) {
+	public synchronized void deposita(double valor) { 
 
 		if (valor <= 0) {
 			throw new IllegalArgumentException("Voce nao pode depositar valor menor ou igual a zero");
